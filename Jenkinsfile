@@ -21,9 +21,9 @@ pipeline{
         }
         stage("DockerHub Login"){
             steps{
-                
-                echo "$DOCKER_PASSWORD" | docker login -u "${USERNAME}" --password-stdin
-
+                sh '''
+                echo "${DOCKER_PASSWORD}" | docker login -u "${USERNAME}" --password-stdin
+                '''
             }
         }
         stage("Image Push"){
